@@ -14,6 +14,11 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
+PURPLE = (128, 0, 128)
+GREEN = (0, 128, 0)
+VIOLET = (238, 130, 238)
+ORANGE = (255, 165, 0)
+PINK = (255, 192, 203)
 
 # Board
 board = np.zeros((3, 3))
@@ -26,13 +31,13 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Tic-Tac-Toe")
 
 # Function to draw lines
-def draw_lines():
+def draw_lines(line_color,line_width=LINE_WIDTH):
     # Horizontal lines
-    pygame.draw.line(screen, BLACK, (0, 100), (300, 100), LINE_WIDTH)
-    pygame.draw.line(screen, BLACK, (0, 200), (300, 200), LINE_WIDTH)
+    pygame.draw.line(screen, line_color, (0, 100), (300, 100), line_width)
+    pygame.draw.line(screen, line_color, (0, 200), (300, 200), line_width)
     # Vertical lines
-    pygame.draw.line(screen, BLACK, (100, 0), (100, 300), LINE_WIDTH)
-    pygame.draw.line(screen, BLACK, (200, 0), (200, 300), LINE_WIDTH)
+    pygame.draw.line(screen, line_color, (100, 0), (100, 300), line_width)
+    pygame.draw.line(screen, line_color, (200, 0), (200, 300), line_width)
 
 # Function to draw X and O
 def draw_figures():
@@ -60,16 +65,18 @@ def check_win(player):
 
 # Function to restart the game
 def restart():
-    #change
+    #change1
     global board, player
     board = np.zeros((3, 3))
     player = 1
     screen.fill(WHITE)
-    draw_lines()
+    draw_lines(PURPLE,10)
 
 # Main game loop
 screen.fill(WHITE)
-draw_lines()
+
+draw_lines(PURPLE, 10)
+
 running = True
 while running:
     for event in pygame.event.get():
@@ -88,7 +95,7 @@ while running:
                     restart()
                 player = 3 - player
 
-            draw_figures()
+            
 
     pygame.display.flip()
 
