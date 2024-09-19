@@ -94,6 +94,7 @@ while running:
                     print(f"Player {player} wins!")
                     restart()
                 player = 3 - player
+            draw_figures()
 
             
 
